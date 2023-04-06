@@ -16,10 +16,10 @@ function objToList(obj){
 }
 
 
-// document.addEventListener(`DOMContentLoaded`, function (){
-//     document.querySelector(`#testUl`).append(testObj[`title`])
-//     objToList(testObj)
-// })
+document.addEventListener(`DOMContentLoaded`, function (){
+    document.querySelector(`#testUl`).append(testObj[`title`])
+    objToList(testObj)
+})
 document.addEventListener(`DOMContentLoaded`, function(){
     fetch(`https://api.coincap.io/v2/assets`)
     .then((res)=>{return res.json()})
