@@ -27,7 +27,9 @@ document.addEventListener(`DOMContentLoaded`, function(){
         console.log(data)
         let dataObj=data
         for(let i=0; i<10; i++){
-        console.log(dataObj[`data`][i])
+            const currentAsset=document.createElement(`li`)
+            currentAsset.textContent=`Asset Name: ${dataObj[`data`][i][`name`]}, Price : $${(Number(dataObj[`data`][i][`priceUsd`]).toFixed(2))}`
+            document.querySelector(`#crypto-ol`).append(currentAsset)
         }
     })
 
