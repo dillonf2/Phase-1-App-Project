@@ -28,9 +28,16 @@ document.addEventListener(`DOMContentLoaded`, function(){
         let dataObj=data
         for(let i=0; i<10; i++){
             const currentAsset=document.createElement(`li`)
-            currentAsset.textContent=`Asset Name: ${dataObj[`data`][i][`name`]}, Price : $${(Number(dataObj[`data`][i][`priceUsd`]).toFixed(2))}`
+            currentAsset.setAttribute(`id`,`listItems`)
+            currentAsset.textContent=`${dataObj[`data`][i][`name`]} // Current Price : $${(Number(dataObj[`data`][i][`priceUsd`]).toFixed(2))}`
             document.querySelector(`#crypto-ol`).append(currentAsset)
         }
     })
 
 })
+
+setTimeout(document.querySelector(`#listItems`).addEventListener(`click`, function(e){
+    let theClickedItem= e.target
+    console.log(theClickedItem)
+    }
+),1000)
