@@ -1,10 +1,3 @@
-testObj = {
-    title: "This is Test Object 1",
-    one :1,
-    two: 2,
-    three: 3
-}
-
 function objToList(obj){
     for (const key in obj){
         if(key!==`title`){
@@ -14,12 +7,6 @@ function objToList(obj){
         }
     }
 }
-
-
-// document.addEventListener(`DOMContentLoaded`, function (){
-//     document.querySelector(`#testUl`).append(testObj[`title`])
-//     objToList(testObj)
-// })
 document.addEventListener(`DOMContentLoaded`, function(){
     fetch(`https://api.coincap.io/v2/assets`)
     .then((res)=>{return res.json()})
@@ -29,21 +16,20 @@ document.addEventListener(`DOMContentLoaded`, function(){
         for(let i=0; i<10; i++){
             const currentAsset=document.createElement(`li`)
             currentAsset.setAttribute(`id`,`listItems`)
-            console.log(currentAsset)
-            currentAsset.textContent=`${dataObj[`data`][i][`name`]} // Current Price : $${(Number(dataObj[`data`][i][`priceUsd`]).toFixed(2))} //  24hr Volume: $${(Number(dataObj[`data`][i][`volumeUsd24Hr`]).toFixed(2)).toLocaleString()} // Market Cap: $${(Number(dataObj[`data`][i][`marketCapUsd`]).toFixed(2))}`
+            // currentAsset.textContent=`${dataObj[`data`][i][`name`]} // Current Price : $${Number(dataObj[`data`][i][`priceUsd`]).toFixed(2).toLocaleString("en-US")} //  24hr Volume: $${(Number(dataObj[`data`][i][`volumeUsd24Hr`]).toFixed(2)).toLocaleString("en-US")} // Market Cap: $${(Number(dataObj[`data`][i][`marketCapUsd`]).toFixed(2)).toLocaleString("en-US")}`
+            const price=dataObj.data[i].priceUsd
+            const convertedPrice="$" + parseFloat(price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            currentAsset.textContent=`${dataObj[`data`][i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: $${(Number(dataObj[`data`][i][`volumeUsd24Hr`]).toFixed(2)).toLocaleString("en-US")} // Market Cap: $${(Number(dataObj[`data`][i][`marketCapUsd`]).toFixed(2)).toLocaleString("en-US")}`
             document.querySelector(`#crypto-ol`).append(currentAsset)
         }
     })
 
 })
-document.getElementById(`#listItems`).addEventListener(`click`,function(){
-    console.log("bitcoin")
+document.addEventListener(`DOMContentLoaded`, ()=>{
+    document.querySelectorAll(`li`).forEach(()=>{console.log(`bitcoin`)})
 })
-
-let number=10
-
-// setTimeout(listItems.addEventListener(`click`, function(e){
-//     let theClickedItem= e.target
-//     console.log(theClickedItem)
-//     }
-// ),1000)
+// const e=document.querySelectorAll(`li`).forEach(function(){console.log(`bitcoin`)})
+// console.log(e)
+// amt = "$" + amt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+amt= "$" + parseFloat(x).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+currentAsset.textContent=`${dataObj[`data`][i][`name`]} // Current Price : $${Number(dataObj[`data`][i][`priceUsd`]).toFixed(2).toLocaleString("en-US")} //  24hr Volume: $${(Number(dataObj[`data`][i][`volumeUsd24Hr`]).toFixed(2)).toLocaleString("en-US")} // Market Cap: $${(Number(dataObj[`data`][i][`marketCapUsd`]).toFixed(2)).toLocaleString("en-US")}`
