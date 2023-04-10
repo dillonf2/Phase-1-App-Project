@@ -29,15 +29,21 @@ document.addEventListener(`DOMContentLoaded`, function(){
         for(let i=0; i<10; i++){
             const currentAsset=document.createElement(`li`)
             currentAsset.setAttribute(`id`,`listItems`)
-            currentAsset.textContent=`${dataObj[`data`][i][`name`]} // Current Price : $${(Number(dataObj[`data`][i][`priceUsd`]).toFixed(2))}`
+            console.log(currentAsset)
+            currentAsset.textContent=`${dataObj[`data`][i][`name`]} // Current Price : $${(Number(dataObj[`data`][i][`priceUsd`]).toFixed(2))} //  24hr Volume: $${(Number(dataObj[`data`][i][`volumeUsd24Hr`]).toFixed(2)).toLocaleString()} // Market Cap: $${(Number(dataObj[`data`][i][`marketCapUsd`]).toFixed(2))}`
             document.querySelector(`#crypto-ol`).append(currentAsset)
         }
     })
 
 })
+document.getElementById(`#listItems`).addEventListener(`click`,function(){
+    console.log("bitcoin")
+})
 
-setTimeout(document.querySelector(`#listItems`).addEventListener(`click`, function(e){
-    let theClickedItem= e.target
-    console.log(theClickedItem)
-    }
-),1000)
+let number=10
+
+// setTimeout(listItems.addEventListener(`click`, function(e){
+//     let theClickedItem= e.target
+//     console.log(theClickedItem)
+//     }
+// ),1000)

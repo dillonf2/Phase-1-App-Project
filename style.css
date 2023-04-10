@@ -10,3 +10,6 @@ li{
     padding-top: 10px;
     cursor: pointer;
 }
+#crypto-ol{
+    text-decoration: underline;
+}
