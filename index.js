@@ -7,7 +7,15 @@ function objToList(obj){
         }
     }
 }
-document.addEventListener(`DOMContentLoaded`, function(){
+function isPositive(num){
+    if (num>0){
+        return `+${num}`
+    } else {
+        return num
+    }
+}
+
+document.addEventListener(`DOMContentLoaded`, ()=>{
     fetch(`https://api.coincap.io/v2/assets`)
     .then((res)=>{return res.json()})
     .then((data)=>{
@@ -18,11 +26,22 @@ document.addEventListener(`DOMContentLoaded`, function(){
             const price=data.data[i].priceUsd
             const volume=data.data[i].volumeUsd24Hr
             const marketCap=data.data[i].marketCapUsd
+            const supply=Number(data.data[i].supply).toFixed(2)
+            const change=Number(data.data[i].changePercent24Hr).toFixed(2)
+            const convertedSupply=parseFloat(supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             const convertedPrice="$" + parseFloat(price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             const convertedVolume="$" + parseFloat(volume).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             const convertedMarketCap="$" + parseFloat(marketCap).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             currentAsset.textContent=`${data.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
             document.querySelector(`#crypto-ol`).append(currentAsset)
+            currentAsset.addEventListener(`click`,()=>{
+                document.querySelector(`#closerLook`).innerHTML=
+                `<ul>${data.data[i].name}
+                <li>Asset Rank: ${data.data[i].rank}</li>
+                <li>Price: ${convertedPrice} (${isPositive(change)}%)</li>
+                <li>Current Supply: ${convertedSupply}</li>
+                </ul>`
+            })
         }
     })
 
