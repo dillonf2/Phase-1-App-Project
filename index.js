@@ -36,12 +36,18 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             document.querySelector(`#crypto-ol`).append(currentAsset)
             currentAsset.addEventListener(`click`,()=>{
                 document.querySelector(`#closerLook`).innerHTML=
-                `<ul>${data.data[i].name}
+                `<ul id="listTitle">${data.data[i].name}
                 <li>Asset Trading Symbol: $${data.data[i].symbol}</li>
                 <li>Asset Rank: ${data.data[i].rank}</li>
                 <li>Price: ${convertedPrice} (${isPositive(change)}%)</li>
                 <li>Current Supply: ${convertedSupply} ${data.data[i].symbol}</li>
                 </ul>`
+            })
+            currentAsset.addEventListener(`mouseover`,(e)=>{
+                e.target.style.color=`purple`
+            })
+            currentAsset.addEventListener(`mouseleave`,(e)=>{
+                e.target.style.color=``
             })
         }
     })
