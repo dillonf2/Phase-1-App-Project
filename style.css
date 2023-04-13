@@ -25,3 +25,25 @@ li{
     font-size: 20pt;
     padding: 5px;
 }
+div#button{
+    color: blue;
+    border: 25px;
+    border-color: blue;
+    border-style: solid;
+    width: 100px;
+    height: 90px;
+    padding: 30px;
+    border-top-left-radius: 25%;
+    border-radius: 25%;
+    text-align: center;
+    font-size: 14pt;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+    padding-bottom: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20pt;
+    text-decoration: underline;
+}

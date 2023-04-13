@@ -50,9 +50,32 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                 e.target.style.color=``
             })
         }
+        // document.querySelector(`#button`).addEventListener(`click`, ()=>{
+        //     const reducer = (accumulator,currentValue)=>accumulator+currentValue
+        //     const change = data.data.changePercent24Hr.reduce(reducer,0)
+        //     const newDiv=document.createElement(`div`)
+        //     newDiv.textContent=`The average 24hr change of the top 10 list is ${change/10}`
+        //     document.querySelector(`#button`).append(newDiv)
+        // })
+        document.querySelector(`#button`).addEventListener(`click`,()=>{
+            const avgChange=data.data.slice(0,10).reduce((accumulator,obj)=>{
+                return ((accumulator)+(obj.changePercent24Hr)/10)
+            },0)
+            const newDiv=document.createElement(`div`)
+            newDiv.innerHTML=`
+                <div id="dailyAvg"> 
+                ${isPositive(avgChange.toFixed(2))}%
+                </div>
+            `
+            document.querySelector(`#avg`).append(newDiv)
+
+            // `${isPositive(avgChange.toFixed(2))}%`
+        })
+        
     })
 
 })
+//888,354,5500; -7950 1531 N telegraph
 
 // const e=document.querySelectorAll(`li`).forEach(function(){console.log(`bitcoin`)})
 // console.log(e)
