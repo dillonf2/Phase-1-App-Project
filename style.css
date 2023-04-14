@@ -26,6 +26,8 @@ li{
     padding: 5px;
 }
 div#button{
+    position: absolute;
+    display: inline-block;
     color: blue;
     border: 25px;
     border-color: blue;
@@ -38,21 +40,25 @@ div#button{
     text-align: center;
     font-size: 14pt;
     background-color: white;
-    margin-left: auto;
+    margin-left: 200px;
     margin-right: auto;
     margin-bottom: auto;
     margin-top: auto;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 20pt;
     text-decoration: underline;
 }
 div#newAssetDiv{
-    width: 450px;
+    width: 535px;
+    display: inline-block;
 }
 div#avg{
-    padding-top: 30px;
+    padding-top: 20px;
     font-size: 65px;
     padding-bottom: 25px;
     padding-left: 30px;
+}
+div#closerLook{
+    display: inline-block;
 }

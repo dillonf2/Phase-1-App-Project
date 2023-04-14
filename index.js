@@ -72,7 +72,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
     })
 
 })
-//888,354,5500; -7950 1531 N telegraph
+
 
 // const e=document.querySelectorAll(`li`).forEach(function(){console.log(`bitcoin`)})
 // console.log(e)
