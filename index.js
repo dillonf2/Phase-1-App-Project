@@ -61,14 +61,11 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             const avgChange=data.data.slice(0,10).reduce((accumulator,obj)=>{
                 return ((accumulator)+(obj.changePercent24Hr)/10)
             },0)
-            const newDiv=document.createElement(`div`)
-            newDiv.innerHTML=`
+            document.querySelector(`#avg`).innerHTML=`
                 <div id="dailyAvg"> 
-                ${isPositive(avgChange.toFixed(2))}%
+                The average change in price (last 24 hours): ${isPositive(avgChange.toFixed(2))}%
                 </div>
             `
-            document.querySelector(`#avg`).append(newDiv)
-
             // `${isPositive(avgChange.toFixed(2))}%`
         })
         

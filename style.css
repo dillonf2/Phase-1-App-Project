@@ -47,3 +47,12 @@ div#button{
     font-size: 20pt;
     text-decoration: underline;
 }
+div#newAssetDiv{
+    width: 450px;
+}
+div#avg{
+    padding-top: 30px;
+    font-size: 65px;
+    padding-bottom: 25px;
+    padding-left: 30px;
+}
