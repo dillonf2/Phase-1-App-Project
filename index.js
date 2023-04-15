@@ -1,12 +1,6 @@
-function objToList(obj){
-    for (const key in obj){
-        if(key!==`title`){
-        newLi=document.createElement(`li`)
-        newLi.textContent=`${key}: ${obj[key]}`
-        document.querySelector(`#testUl`).append(newLi)
-        }
-    }
-}
+
+// Takes a percentage amount and adds a + sign if it is a positive percentage // 
+
 function isPositive(num){
     if (num>0){
         return `+${num}`
@@ -14,6 +8,9 @@ function isPositive(num){
         return num
     }
 }
+
+// Fetch current crypto data; Out of the 100 returned asset objects, grab only the top 10 assets // 
+// Append certain attributes of those assets to the DOM in an ordered list // 
 
 document.addEventListener(`DOMContentLoaded`, ()=>{
     fetch(`https://api.coincap.io/v2/assets`)
@@ -33,6 +30,9 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             const convertedMarketCap="$" + parseFloat(marketCap).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             currentAsset.textContent=`${data.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
             document.querySelector(`#crypto-ol`).append(currentAsset)
+
+            // Event Listener; click any of the top 10 assets for a closer look at some additional details of that asset //
+
             currentAsset.addEventListener(`click`,()=>{
                 document.querySelector(`#closerLook`).innerHTML=
                 `<ul id="listTitle">${data.data[i].name}
@@ -42,21 +42,18 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                 <li>Current Supply: ${convertedSupply} ${data.data[i].symbol}</li>
                 </ul>`
                 document.querySelector(`#newAssetDiv`).style.padding=`0px 0px 0px 0px`
-            })
-            currentAsset.addEventListener(`mouseover`,(e)=>{
-                e.target.style.color=`purple`
-            })
-            currentAsset.addEventListener(`mouseleave`,(e)=>{
-                e.target.style.color=``
-            })
-        }
-        // document.querySelector(`#button`).addEventListener(`click`, ()=>{
-        //     const reducer = (accumulator,currentValue)=>accumulator+currentValue
-        //     const change = data.data.changePercent24Hr.reduce(reducer,0)
-        //     const newDiv=document.createElement(`div`)
-        //     newDiv.textContent=`The average 24hr change of the top 10 list is ${change/10}`
-        //     document.querySelector(`#button`).append(newDiv)
-        // })
+        })
+
+            // Event Listener; change the color of the text when a top 10 asset is moused over // 
+
+        currentAsset.addEventListener(`mouseover`,(e)=>{
+            e.target.style.color=`purple`
+        })
+        currentAsset.addEventListener(`mouseleave`,(e)=>{
+            e.target.style.color=``
+        })
+    }
+
         document.querySelector(`#button`).addEventListener(`click`,()=>{
             const avgChange=data.data.slice(0,10).reduce((accumulator,obj)=>{
                 return ((accumulator)+(obj.changePercent24Hr)/10)
@@ -66,16 +63,11 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                 The average change in price (last 24 hours): ${isPositive(avgChange.toFixed(2))}%
                 </div>
             `
-            // `${isPositive(avgChange.toFixed(2))}%`
         })
-        
     })
-
 })
 
-
-// const e=document.querySelectorAll(`li`).forEach(function(){console.log(`bitcoin`)})
-// console.log(e)
-// amt = "$" + amt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-// amt= "$" + parseFloat(x).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+// Formulas to format number values to US currency formatting including commas and dollar signs
+    // amt = "$" + amt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // amt= "$" + parseFloat(x).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 // currentAsset.textContent=`${dataObj[`data`][i][`name`]} // Current Price : $${Number(dataObj[`data`][i][`priceUsd`]).toFixed(2).toLocaleString("en-US")} //  24hr Volume: $${(Number(dataObj[`data`][i][`volumeUsd24Hr`]).toFixed(2)).toLocaleString("en-US")} // Market Cap: $${(Number(dataObj[`data`][i][`marketCapUsd`]).toFixed(2)).toLocaleString("en-US")}`

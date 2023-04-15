@@ -51,21 +51,18 @@ div#button{
 div#newAssetDiv{
     width: 535px;
     display: inline-block;
-    padding-bottom: 177px;
+    padding-bottom: 190px;
     font-size: 25pt;
 }
 div#avg{
     /* padding-top: 165px; */
     position: relative;
-    font-size: 65px;
+    font-size: 45px;
     padding-bottom: 25px;
     padding-left: 30px;
     position:static;
-
+    font-family: 'Courier New', Courier, monospace;
 }
 div#closerLook{
     display: inline-block;
-    border: 5px;
-    border-color: black;
-    border-radius: 3px;
 }
