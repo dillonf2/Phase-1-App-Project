@@ -18,9 +18,7 @@ li#listItems{
 body{
     background-color:  rgb(23, 158, 236)
 }
-div#newAssetDiv{
-    font-size: 25pt;
-}
+
 li{
     font-size: 20pt;
     padding: 5px;
@@ -48,17 +46,26 @@ div#button{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 20pt;
     text-decoration: underline;
+    cursor: pointer;
 }
 div#newAssetDiv{
     width: 535px;
     display: inline-block;
+    padding-bottom: 177px;
+    font-size: 25pt;
 }
 div#avg{
-    padding-top: 20px;
+    /* padding-top: 165px; */
+    position: relative;
     font-size: 65px;
     padding-bottom: 25px;
     padding-left: 30px;
+    position:static;
+
 }
 div#closerLook{
     display: inline-block;
+    border: 5px;
+    border-color: black;
+    border-radius: 3px;
 }

@@ -19,7 +19,6 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
     fetch(`https://api.coincap.io/v2/assets`)
     .then((res)=>{return res.json()})
     .then((data)=>{
-        console.log(data)
         for(let i=0; i<10; i++){
             const currentAsset=document.createElement(`li`)
             currentAsset.setAttribute(`id`,`listItems`)
@@ -42,6 +41,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                 <li>Price: ${convertedPrice} (${isPositive(change)}%)</li>
                 <li>Current Supply: ${convertedSupply} ${data.data[i].symbol}</li>
                 </ul>`
+                document.querySelector(`#newAssetDiv`).style.padding=`0px 0px 0px 0px`
             })
             currentAsset.addEventListener(`mouseover`,(e)=>{
                 e.target.style.color=`purple`
