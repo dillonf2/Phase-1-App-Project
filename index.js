@@ -18,7 +18,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
     .then((data)=>{
         for(let i=0; i<10; i++){
             const currentAsset=document.createElement(`li`)
-            currentAsset.setAttribute("class","listItems")
+            currentAsset.setAttribute("class",`listItems`)
             const price=data.data[i].priceUsd
             const volume=data.data[i].volumeUsd24Hr
             const marketCap=data.data[i].marketCapUsd
