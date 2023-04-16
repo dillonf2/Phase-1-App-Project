@@ -3,7 +3,7 @@ ol{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     
 }
-li#listItems{
+.listItems{
     font-size: 15pt;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-decoration: none;
@@ -11,7 +11,6 @@ li#listItems{
     cursor: pointer;
 }
 #crypto-ol{
-    text-decoration: underline;
     text-underline-offset: 5px;
     padding-bottom: 25px;
 }
@@ -53,6 +52,7 @@ div#newAssetDiv{
     display: inline-block;
     padding-bottom: 190px;
     font-size: 25pt;
+    padding-left: 25px;
 }
 div#avg{
     /* padding-top: 165px; */
@@ -65,4 +65,8 @@ div#avg{
 }
 div#closerLook{
     display: inline-block;
+}
+ol#crypto-ol>li{
+    padding-top: 25px;
+    padding-bottom: 10px;
 }

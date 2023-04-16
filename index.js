@@ -1,5 +1,5 @@
 
-// Takes a percentage amount and adds a + sign if it is a positive percentage // 
+// Takes a percentage and adds a + sign if it is a positive percentage // 
 
 function isPositive(num){
     if (num>0){
@@ -18,7 +18,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
     .then((data)=>{
         for(let i=0; i<10; i++){
             const currentAsset=document.createElement(`li`)
-            currentAsset.setAttribute(`id`,`listItems`)
+            currentAsset.setAttribute("class","listItems")
             const price=data.data[i].priceUsd
             const volume=data.data[i].volumeUsd24Hr
             const marketCap=data.data[i].marketCapUsd
@@ -41,7 +41,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                 <li>Price: ${convertedPrice} (${isPositive(change)}%)</li>
                 <li>Current Supply: ${convertedSupply} ${data.data[i].symbol}</li>
                 </ul>`
-                document.querySelector(`#newAssetDiv`).style.padding=`0px 0px 0px 0px`
+                document.querySelector(`#newAssetDiv`).style.padding=`0px 0px 0px 25px`
         })
 
             // Event Listener; change the color of the text when a top 10 asset is moused over // 
@@ -53,6 +53,9 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             e.target.style.color=``
         })
     }
+        window.setInterval(()=>{
+
+        },2000)
 
         document.querySelector(`#button`).addEventListener(`click`,()=>{
             const avgChange=data.data.slice(0,10).reduce((accumulator,obj)=>{
@@ -60,7 +63,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             },0)
             document.querySelector(`#avg`).innerHTML=`
                 <div id="dailyAvg"> 
-                The average change in price (last 24 hours): ${isPositive(avgChange.toFixed(2))}%
+                The Average Change in Price (last 24 hours): ${isPositive(avgChange.toFixed(2))}%
                 </div>
             `
         })
