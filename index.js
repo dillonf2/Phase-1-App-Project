@@ -84,7 +84,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                 <li>Price: ${formatNumber(data.data[i].priceUsd)} (${isPositive(Number(data.data[i].changePercent24Hr).toFixed(2))}%)</li>
                 <li>Current Supply: ${formatNumber(data.data[i].supply)} ${data.data[i].symbol}</li>
                 </ul>`
-                document.querySelector(`#newAssetDiv`).style.padding=`0px 0px 0px 25px`
+                document.querySelector(`#newAssetDiv`).style.padding=`25px 0px 0px 25px`
             })
 
             // Event Listener; change the color of the text when a top 10 asset is moused over // 
@@ -104,7 +104,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             const avgChange=data.data.slice(0,10).reduce((accumulator,obj)=>{
                 return ((accumulator)+(obj.changePercent24Hr)/10)
                 },0)
-                
+
             document.querySelector(`#avg`).innerHTML=`
                 <div id="dailyAvg"> 
                 The Average Change in Price (last 24 hours): ${isPositive(avgChange.toFixed(2))}%
