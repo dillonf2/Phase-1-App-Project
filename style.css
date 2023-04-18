@@ -43,7 +43,6 @@ div#button{
     padding-bottom: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 20pt;
-    /* text-decoration: underline; */
     cursor: pointer;
 }
 div#newAssetDiv{
@@ -78,4 +77,5 @@ div#divObj{
     border-width: 5px;
     border-color: white;
     width: 1250px;
+    text-underline-offset: 6px;
 }
