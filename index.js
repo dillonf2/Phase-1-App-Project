@@ -1,5 +1,5 @@
 
-// Takes a percentage and adds a + sign if it is a positive percentage // 
+// Function; Takes a percentage value and adds a + sign if it is a positive percentage // 
 
 function isPositive(num){
     if (num>0){
@@ -12,6 +12,45 @@ function isPositive(num){
 // Fetch current crypto data; Out of the 100 returned asset objects, grab only the top 10 assets // 
 // Append certain attributes of those assets to the DOM in an ordered list // 
 
+let price= 0
+let volume= 0
+let marketCap= 0
+let supply= 0
+let convertedSupply= 0
+let convertedPrice= 0
+let convertedMarketCap= 0
+let convertedVolume = 0
+
+// Function ; Format a number in USD (i.e 100000.54 ---> $100,000.54) //
+
+function formatNumber(num){
+    return `$`+parseFloat(num).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
+
+// Update the DOM asset information every 2 seconds without needing to refresh the page //
+
+document.addEventListener(`DOMContentLoaded`, ()=>{
+    setInterval(()=>{
+        fetch(`https://api.coincap.io/v2/assets`)
+        .then((res)=>{return res.json()})
+        .then((data)=>{
+            for(let i=0; i<10; i++){
+                price=data.data[i].priceUsd
+                volume=data.data[i].volumeUsd24Hr
+                marketCap=data.data[i].marketCapUsd
+                supply=Number(data.data[i].supply).toFixed(2)
+                change=Number(data.data[i].changePercent24Hr).toFixed(2)
+                convertedPrice=formatNumber(price)
+                convertedVolume=formatNumber(volume)
+                convertedMarketCap=formatNumber(marketCap)
+                document.querySelector(`#listItem${i}`).textContent=`${data.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
+            }}
+        )
+    },2000)
+})
+
+// The initial fetch request for crypto asset info, and appending it to the DOM // 
+
 document.addEventListener(`DOMContentLoaded`, ()=>{
     fetch(`https://api.coincap.io/v2/assets`)
     .then((res)=>{return res.json()})
@@ -19,6 +58,8 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
         for(let i=0; i<10; i++){
             const currentAsset=document.createElement(`li`)
             currentAsset.setAttribute("class",`listItems`)
+            currentAsset.setAttribute("id",`listItem${i}`)
+
             const price=data.data[i].priceUsd
             const volume=data.data[i].volumeUsd24Hr
             const marketCap=data.data[i].marketCapUsd
@@ -28,44 +69,46 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             const convertedPrice="$" + parseFloat(price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             const convertedVolume="$" + parseFloat(volume).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             const convertedMarketCap="$" + parseFloat(marketCap).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            
             currentAsset.textContent=`${data.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
             document.querySelector(`#crypto-ol`).append(currentAsset)
 
             // Event Listener; click any of the top 10 assets for a closer look at some additional details of that asset //
 
+            console.log(data.data[i])
             currentAsset.addEventListener(`click`,()=>{
                 document.querySelector(`#closerLook`).innerHTML=
                 `<ul id="listTitle">${data.data[i].name}
                 <li>Asset Trading Symbol: $${data.data[i].symbol}</li>
                 <li>Asset Rank: ${data.data[i].rank}</li>
-                <li>Price: ${convertedPrice} (${isPositive(change)}%)</li>
-                <li>Current Supply: ${convertedSupply} ${data.data[i].symbol}</li>
+                <li>Price: ${formatNumber(data.data[i].priceUsd)} (${isPositive(Number(data.data[i].changePercent24Hr).toFixed(2))}%)</li>
+                <li>Current Supply: ${formatNumber(data.data[i].supply)} ${data.data[i].symbol}</li>
                 </ul>`
                 document.querySelector(`#newAssetDiv`).style.padding=`0px 0px 0px 25px`
-        })
+            })
 
             // Event Listener; change the color of the text when a top 10 asset is moused over // 
 
-        currentAsset.addEventListener(`mouseover`,(e)=>{
-            e.target.style.color=`purple`
-        })
-        currentAsset.addEventListener(`mouseleave`,(e)=>{
-            e.target.style.color=``
-        })
-    }
-        window.setInterval(()=>{
+            currentAsset.addEventListener(`mouseover`,(e)=>{
+                e.target.style.color=`purple`
+            })
+            currentAsset.addEventListener(`mouseleave`,(e)=>{
+                e.target.style.color=``
+            })
+        }
 
-        },2000)
+
+            // Event Listener; click the button to display the average gain of the top 10 assets //
 
         document.querySelector(`#button`).addEventListener(`click`,()=>{
             const avgChange=data.data.slice(0,10).reduce((accumulator,obj)=>{
                 return ((accumulator)+(obj.changePercent24Hr)/10)
-            },0)
+                },0)
+                
             document.querySelector(`#avg`).innerHTML=`
                 <div id="dailyAvg"> 
                 The Average Change in Price (last 24 hours): ${isPositive(avgChange.toFixed(2))}%
-                </div>
-            `
+                </div>`
         })
     })
 })
