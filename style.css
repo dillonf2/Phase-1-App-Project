@@ -1,11 +1,11 @@
 ol{
     font-size: 25pt;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
 }
 .listItems{
-    font-size: 15pt;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18pt;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-decoration: none;
     padding-top: 10px;
     cursor: pointer;
@@ -41,12 +41,12 @@ div#button{
     margin-bottom: auto;
     margin-top: auto;
     padding-bottom: 40px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 20pt;
+    font-size: 22pt;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     cursor: pointer;
 }
 div#newAssetDiv{
-    width: 535px;
+    width: 545px;
     display: inline-block;
     padding-bottom: 190px;
     font-size: 25pt;
@@ -61,11 +61,12 @@ div#avg{
     padding-bottom: 25px;
     padding-left: 30px;
     position:static;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: white;
 }
 div#closerLook{
     display: inline-block;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 ol#crypto-ol>li{
     padding-top: 25px;
