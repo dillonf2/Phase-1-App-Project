@@ -12,6 +12,7 @@ ol{
 }
 #crypto-ol{
     text-underline-offset: 5px;
+    font-size: 30pt;
 }
 body{
     background-color:  rgb(23, 158, 236)
@@ -41,7 +42,7 @@ div#button{
     margin-bottom: auto;
     margin-top: auto;
     padding-bottom: 40px;
-    font-size: 22pt;
+    font-size: 24pt;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     cursor: pointer;
 }
@@ -57,7 +58,7 @@ div#newAssetDiv{
 div#avg{
     padding-top: 10px;
     position: relative;
-    font-size: 45px;
+    font-size: 52px;
     padding-bottom: 25px;
     padding-left: 30px;
     position:static;
