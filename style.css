@@ -43,7 +43,7 @@ div#button{
     padding-bottom: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 20pt;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     cursor: pointer;
 }
 div#newAssetDiv{
@@ -63,6 +63,7 @@ div#avg{
     padding-left: 30px;
     position:static;
     font-family: 'Courier New', Courier, monospace;
+    color: white;
 }
 div#closerLook{
     display: inline-block;

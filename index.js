@@ -82,7 +82,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                 <li>Asset Trading Symbol: $${data.data[i].symbol}</li>
                 <li>Asset Rank: ${data.data[i].rank}</li>
                 <li>Price: ${formatNumber(data.data[i].priceUsd)} (${isPositive(Number(data.data[i].changePercent24Hr).toFixed(2))}%)</li>
-                <li>Current Supply: ${formatNumber(data.data[i].supply)} ${data.data[i].symbol}</li>
+                <li>Current Supply: ${parseFloat(supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ${data.data[i].symbol}</li>
                 </ul>`
                 document.querySelector(`#newAssetDiv`).style.padding=`25px 0px 0px 25px`
             })
@@ -90,7 +90,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             // Event Listener; change the color of the text when a top 10 asset is moused over // 
 
             currentAsset.addEventListener(`mouseover`,(e)=>{
-                e.target.style.color=`purple`
+                e.target.style.color=`white`
             })
             currentAsset.addEventListener(`mouseleave`,(e)=>{
                 e.target.style.color=``
