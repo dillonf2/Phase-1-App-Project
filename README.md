@@ -4,7 +4,7 @@ Crypto Price Checker is a single page application that provides the current mark
 
 ## Instructions
 
-Simply head to https://dillonf2.github.io/Phase-1-App-Project/ to see the current top 10 assets. Click on any of them for some additional information. Click the button at the bottom of the page to display the average change over 24 hours of the top 10 assets. 
+Simply head to https://dillonf2.github.io/Phase-1-App-Project/ to see the current top 10 crypto assets. Click on any of them for some additional information. Click the button at the bottom of the page to display the average change over 24 hours of the top 10 assets. 
 
 ## Visuals
 
