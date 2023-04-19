@@ -18,6 +18,7 @@ Get real time crypto data and compare asset information for the main crypto asse
 ## Support
 
 For more information on blockchain technology, and specifically Bitcoin, I recommend consulting the Bitcoin Whitepaper: https://bitcoin.org/bitcoin.pdf
+
 For more information on Ethereum, the home chain of DAPPS and Decentralized Finance, I recommend consulting https://ethereum.org/en/
 
 ## Authors and Acknowledgement 
