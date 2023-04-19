@@ -51,20 +51,6 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             currentAsset.textContent=`${data.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
             document.querySelector(`#crypto-ol`).append(currentAsset)
 
-            // Event Listener; click any of the top 10 assets for a closer look at some additional details of that asset //
-
-            console.log(data.data[i])
-            currentAsset.addEventListener(`click`,()=>{
-                document.querySelector(`#closerLook`).innerHTML=
-                `<ul id="listTitle">${data.data[i].name}
-                <li>Asset Trading Symbol: $${data.data[i].symbol}</li>
-                <li>Asset Rank: ${data.data[i].rank}</li>
-                <li>Price: ${formatNumber(data.data[i].priceUsd)} (${isPositive(Number(data.data[i].changePercent24Hr).toFixed(2))}%)</li>
-                <li>Current Supply: ${parseFloat(supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ${data.data[i].symbol}</li>
-                </ul>`
-                document.querySelector(`#newAssetDiv`).style.padding=`25px 0px 0px 25px`
-            })
-
             // Event Listener; change the color of the text when a top 10 asset is moused over // 
 
             currentAsset.addEventListener(`mouseover`,(e)=>{
@@ -108,9 +94,24 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                 convertedVolume=formatNumber(volume)
                 convertedMarketCap=formatNumber(marketCap)
                 document.querySelector(`#listItem${i}`).textContent=`${data.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
+
+                // Event Listener; click any of the top 10 assets for a closer look at some additional details of that asset //
+
+
+                document.querySelector(`#listItem${i}`).addEventListener(`click`,()=>{
+                    document.querySelector(`#closerLook`).innerHTML=
+                    `<ul id="listTitle">${data.data[i].name}
+                    <li>Asset Trading Symbol: $${data.data[i].symbol}</li>
+                    <li>Asset Rank: ${data.data[i].rank}</li>
+                    <li>Price: ${formatNumber(data.data[i].priceUsd)} (${isPositive(Number(data.data[i].changePercent24Hr).toFixed(2))}%)</li>
+                    <li>Current Supply: ${parseFloat(supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ${data.data[i].symbol}</li>
+                    </ul>`
+                    document.querySelector(`#newAssetDiv`).style.padding=`25px 0px 0px 25px`
+                })
+                
             }}
         )
-    },2000)
+    },1000)
 })
 
 
