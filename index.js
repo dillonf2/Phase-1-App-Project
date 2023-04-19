@@ -11,7 +11,7 @@ function isPositive(num){
 
 // Declare these variables globally so they can be accessed by multiple functions and update in real time //
 
-let price= 0
+let price= []
 let volume= 0
 let marketCap= 0
 let supply= 0
@@ -38,15 +38,15 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             currentAsset.setAttribute("class",`listItems`)
             currentAsset.setAttribute("id",`listItem${i}`)
 
-            const price=data.data[i].priceUsd
-            const volume=data.data[i].volumeUsd24Hr
-            const marketCap=data.data[i].marketCapUsd
-            const supply=Number(data.data[i].supply).toFixed(2)
-            const change=Number(data.data[i].changePercent24Hr).toFixed(2)
-            const convertedSupply=parseFloat(supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            const convertedPrice="$" + parseFloat(price).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            const convertedVolume="$" + parseFloat(volume).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            const convertedMarketCap="$" + parseFloat(marketCap).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+             price[i]=data.data[i].priceUsd
+             volume=data.data[i].volumeUsd24Hr
+             marketCap=data.data[i].marketCapUsd
+             supply=Number(data.data[i].supply).toFixed(2)
+             change=Number(data.data[i].changePercent24Hr).toFixed(2)
+             convertedSupply=parseFloat(supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+             convertedPrice="$" + parseFloat(price[i]).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            convertedVolume="$" + parseFloat(volume).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            convertedMarketCap="$" + parseFloat(marketCap).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             
             currentAsset.textContent=`${data.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
             document.querySelector(`#crypto-ol`).append(currentAsset)
@@ -85,12 +85,12 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
         .then((res)=>{return res.json()})
         .then((data)=>{
             for(let i=0; i<10; i++){
-                price=data.data[i].priceUsd
+                price[i]=data.data[i].priceUsd
                 volume=data.data[i].volumeUsd24Hr
                 marketCap=data.data[i].marketCapUsd
                 supply=Number(data.data[i].supply).toFixed(2)
                 change=Number(data.data[i].changePercent24Hr).toFixed(2)
-                convertedPrice=formatNumber(price)
+                convertedPrice=formatNumber(price[i])
                 convertedVolume=formatNumber(volume)
                 convertedMarketCap=formatNumber(marketCap)
                 document.querySelector(`#listItem${i}`).textContent=`${data.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
@@ -103,17 +103,16 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                     `<ul id="listTitle">${data.data[i].name}
                     <li>Asset Trading Symbol: $${data.data[i].symbol}</li>
                     <li>Asset Rank: ${data.data[i].rank}</li>
-                    <li>Price: ${formatNumber(data.data[i].priceUsd)} (${isPositive(Number(data.data[i].changePercent24Hr).toFixed(2))}%)</li>
+                    <li>Price: ${formatNumber(price[i])} (${isPositive(Number(data.data[i].changePercent24Hr).toFixed(2))}%)</li>
                     <li>Current Supply: ${parseFloat(supply).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ${data.data[i].symbol}</li>
                     </ul>`
                     document.querySelector(`#newAssetDiv`).style.padding=`25px 0px 0px 25px`
                 })
-                
             }}
         )
     },1000)
 })
-
+console.log(price)
 
 // Formulas to format number values to US currency formatting including commas and dollar signs//
 
