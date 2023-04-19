@@ -6,11 +6,19 @@ Crypto Price Checker is a single page application that provides the current mark
 
 Simply head to https://dillonf2.github.io/Phase-1-App-Project/ to see the current top 10 crypto assets. Click on any of them for some additional information. Click the button at the bottom of the page to display the average change over 24 hours of the top 10 assets. 
 
+## Usage
+
+Get real time crypto data and compare asset information for the main crypto assets in circulation.
+
 ## Visuals
 
 <img width="1304" alt="image" src="https://user-images.githubusercontent.com/122653725/233203179-616bcdb6-a102-49e9-8ae9-f15f04544ee3.png">
 <img width="1305" alt="image" src="https://user-images.githubusercontent.com/122653725/233203012-9562d887-0c80-43ee-b0c7-fd9d133d0723.png">
 
+## Support
+
+For more information on blockchain technology, and specifically Bitcoin, I recommend consulting the Bitcoin Whitepaper: https://bitcoin.org/bitcoin.pdf
+For more information on Ethereum, the home chain of DAPPS and Decentralized Finance, I recommend consulting https://ethereum.org/en/
 
 ## Authors and Acknowledgement 
 
