@@ -112,7 +112,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
         )
     },1000)
 })
-console.log(price)
+
 
 // Formulas to format number values to US currency formatting including commas and dollar signs//
 
