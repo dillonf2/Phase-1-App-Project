@@ -8,7 +8,7 @@ Simply head to https://dillonf2.github.io/Phase-1-App-Project/ to see the curren
 
 ## Visuals
 
-<img width="1291" alt="image" src="https://user-images.githubusercontent.com/122653725/233202937-de5d21d3-1f64-4792-8d62-21ba7e276890.png">
+<img width="1304" alt="image" src="https://user-images.githubusercontent.com/122653725/233203179-616bcdb6-a102-49e9-8ae9-f15f04544ee3.png">
 <img width="1305" alt="image" src="https://user-images.githubusercontent.com/122653725/233203012-9562d887-0c80-43ee-b0c7-fd9d133d0723.png">
 
 
