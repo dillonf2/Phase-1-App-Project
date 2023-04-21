@@ -1,4 +1,3 @@
-
 function isPositive(num){
     if (num>0){
         return `+${num}`
@@ -43,7 +42,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             supply=Number(fetchedData.data[i].supply).toFixed(2)
             change=Number(fetchedData.data[i].changePercent24Hr).toFixed(2)
             convertedSupply=formatNumber(supply)
-            convertedPrice=formatNumber(price)
+            convertedPrice=formatNumber(price[i])
             convertedVolume=formatNumber(volume)
             convertedMarketCap=formatNumber(marketCap)
 
@@ -77,7 +76,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
                 marketCap=fetchedData.data[i].marketCapUsd
                 supply=Number(fetchedData.data[i].supply).toFixed(2)
                 change=Number(fetchedData.data[i].changePercent24Hr).toFixed(2)
-                convertedPrice=formatNumber(price)
+                convertedPrice=formatNumber(price[i])
                 convertedVolume=formatNumber(volume)
                 convertedMarketCap=formatNumber(marketCap)
                 document.querySelector(`#listItem${i}`).textContent=`${fetchedData.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
