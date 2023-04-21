@@ -27,6 +27,18 @@ function fetcher(){
 function formatNumber(num){
     return `$`+parseFloat(num).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
+function renderAndUpdate(i){
+    price[i]=fetchedData.data[i].priceUsd
+    volume=fetchedData.data[i].volumeUsd24Hr
+    marketCap=fetchedData.data[i].marketCapUsd
+    supply=Number(fetchedData.data[i].supply).toFixed(2)
+    change=Number(fetchedData.data[i].changePercent24Hr).toFixed(2)
+    convertedSupply=formatNumber(supply)
+    convertedPrice=formatNumber(price[i])
+    convertedVolume=formatNumber(volume)
+    convertedMarketCap=formatNumber(marketCap)
+    document.querySelector(`#listItem${i}`).textContent=`${fetchedData.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
+}
 
 document.addEventListener(`DOMContentLoaded`, ()=>{
         fetcher()
@@ -36,18 +48,8 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
             const currentAsset=document.createElement(`li`)
             currentAsset.setAttribute("class",`listItems`)
             currentAsset.setAttribute("id",`listItem${i}`)
-            price[i]=fetchedData.data[i].priceUsd
-            volume=fetchedData.data[i].volumeUsd24Hr
-            marketCap=fetchedData.data[i].marketCapUsd
-            supply=Number(fetchedData.data[i].supply).toFixed(2)
-            change=Number(fetchedData.data[i].changePercent24Hr).toFixed(2)
-            convertedSupply=formatNumber(supply)
-            convertedPrice=formatNumber(price[i])
-            convertedVolume=formatNumber(volume)
-            convertedMarketCap=formatNumber(marketCap)
-
-            currentAsset.textContent=`${fetchedData.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
             document.querySelector(`#crypto-ol`).append(currentAsset)
+            renderAndUpdate(i)
 
             currentAsset.addEventListener(`mouseover`,(e)=>{
                 e.target.style.color=`white`
@@ -71,16 +73,7 @@ document.addEventListener(`DOMContentLoaded`, ()=>{
     setInterval(()=>{
             fetcher()
             for(let i=0; i<10; i++){
-                price[i]=fetchedData.data[i].priceUsd
-                volume=fetchedData.data[i].volumeUsd24Hr
-                marketCap=fetchedData.data[i].marketCapUsd
-                supply=Number(fetchedData.data[i].supply).toFixed(2)
-                change=Number(fetchedData.data[i].changePercent24Hr).toFixed(2)
-                convertedPrice=formatNumber(price[i])
-                convertedVolume=formatNumber(volume)
-                convertedMarketCap=formatNumber(marketCap)
-                document.querySelector(`#listItem${i}`).textContent=`${fetchedData.data[i][`name`]} // Current Price : ${convertedPrice} //  24hr Volume: ${convertedVolume} // Market Cap: ${convertedMarketCap}`
-
+                renderAndUpdate(i)
                 document.querySelector(`#listItem${i}`).addEventListener(`click`,()=>{
                     document.querySelector(`#closerLook`).innerHTML=
                     `<ul id="listTitle">${fetchedData.data[i].name}
