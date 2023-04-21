@@ -21,7 +21,6 @@ function fetcher(){
         fetch(`https://api.coincap.io/v2/assets`)
         .then((res)=>{return res.json()})
         .then((data)=>{
-        JSON.stringify()
         fetchedData=data
         })
 }
